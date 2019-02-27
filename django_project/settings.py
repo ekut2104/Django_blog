@@ -136,13 +136,13 @@ STATICFILES_DIRS = [
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': 400,
-        'width': 685,
-    },
-}
+# CKEDITOR_CONFIGS = {
+#     'default': {
+#         'toolbar': 'full',
+#         'height': 400,
+#         'width': 685,
+#     },
+# }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
