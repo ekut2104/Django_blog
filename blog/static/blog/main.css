@@ -28,6 +28,16 @@ ul {
   font-weight: 500;
 }
 
+.media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  flex-flow: column;
+}
+
 .content-section {
   background: #ffffff;
   padding: 10px 20px;
