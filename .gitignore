@@ -5,4 +5,5 @@ users/__pycache__/
 users/migrations/__pycache__/
 db.sqlite3
 .fuse_hidden0000043600000004
-
+/collected_static
+/media
