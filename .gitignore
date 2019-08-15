@@ -7,3 +7,4 @@ db.sqlite3
 .fuse_hidden0000043600000004
 /collected_static
 /media
+.env
