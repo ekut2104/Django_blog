@@ -16,6 +16,16 @@
             </div>
         </form>
         <div class="border-top pt-3">
+            {% load account socialaccount %}
+            {% get_providers as socialaccount_providers %}
+            <small class="text-muted">
+                    {% for provider in socialaccount_providers %}
+                        <a title="{{provider.name}}" class="btn btn-outline-dark"
+                         href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}"><i class="fa fa-{{provider.name}}" id="social_icon"></i>{{provider.name}}</a>
+                    {% endfor %}
+            </small>
+        </div>
+        <div class="border-top pt-3">
             <small class="text-muted">
                 Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
             </small>
