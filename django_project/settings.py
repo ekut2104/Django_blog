@@ -47,8 +47,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
     'django.contrib.sites',
-
+    'django_extensions',
 ]
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
 
 SITE_ID = 1
 
@@ -64,6 +66,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'django_project.urls'
 
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 60
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
