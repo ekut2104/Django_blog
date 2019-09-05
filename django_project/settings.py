@@ -13,7 +13,6 @@ from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -24,7 +23,6 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -48,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'django.contrib.sites',
     'django_extensions',
+    'disqus',
 ]
 
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
@@ -75,7 +74,6 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-
 
 TEMPLATES = [
     {
@@ -105,7 +103,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -124,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -137,7 +133,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -158,10 +153,33 @@ CKEDITOR_IMAGE_BACKEND = "pillow"
 
 CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': 'full',
-        'height': 400,
-        'width': 700,
-    },
+
+        'toolbar': [
+            ['Undo', 'Redo',
+             '-', 'Bold', 'Italic', 'Underline',
+             '-', 'Link', 'Unlink', 'Anchor',
+             '-', 'Format',
+             '-', 'Maximize',
+             '-', 'Table',
+             '-', 'Image',
+             '-', 'Source',
+             '-', 'NumberedList', 'BulletedList'
+             ],
+            ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock',
+             '-', 'Font', 'FontSize', 'TextColor',
+             '-', 'Outdent', 'Indent',
+             '-', 'HorizontalRule',
+             '-', 'Blockquote'
+             ]
+        ],
+
+        'removePlugins': 'elementspath',
+        'resize_enabled': False,
+        'extraPlugins': 'image2',
+        'height': 500,
+        'width': '100%',
+        'toolbarCanCollapse': False,
+        'forcePasteAsPlainText': True},
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -175,3 +193,5 @@ EMAIL_PORT = config('EMAIL_PORT', cast=int)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+DISQUS_API_KEY = config('DISQUS_API_KEY')
+DISQUS_WEBSITE_SHORTNAME = config('DISQUS_WEBSITE_SHORTNAME')
