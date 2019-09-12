@@ -7,7 +7,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    content = RichTextUploadingField(null=True, blank=True)
+    content = RichTextUploadingField(null=True, blank=True, external_plugin_resources=[('youtube', '/static/ckeditor/ckeditor/plugins/youtube/', 'plugin.js', )])
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 

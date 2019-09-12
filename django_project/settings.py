@@ -150,10 +150,17 @@ STATICFILES_DIRS = [
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 CKEDITOR_IMAGE_BACKEND = "pillow"
+# CKEDITOR_THUMBNAIL_SIZE = 100
+CKEDITOR_FORCE_JPEG_COMPRESSION = True
+CKEDITOR_IMAGE_QUALITY = 50
+CKEDITOR_UPLOAD_SLUGIFY_FILENAME = False
+CKEDITOR_RESTRICT_BY_USER = True
+CKEDITOR_BROWSE_SHOW_DIRS = True
+CKEDITOR_RESTRICT_BY_DATE = True
 
 CKEDITOR_CONFIGS = {
     'default': {
-
+        'skin': 'moono',
         'toolbar': [
             ['Undo', 'Redo',
              '-', 'Bold', 'Italic', 'Underline',
@@ -170,17 +177,23 @@ CKEDITOR_CONFIGS = {
              '-', 'Outdent', 'Indent',
              '-', 'HorizontalRule',
              '-', 'Blockquote'
-             ]
+             ],
+            ['CodeSnippet', 'Youtube'],
         ],
 
         'removePlugins': 'elementspath',
-        'resize_enabled': False,
-        'extraPlugins': 'image2',
+        'resize_enabled': True,
+        'extraPlugins': ','.join([
+            'youtube',
+            'autolink',
+            'autoembed',
+            'codesnippet',
+        ]),
         'height': 500,
         'width': '100%',
-        'toolbarCanCollapse': False,
-        'forcePasteAsPlainText': True},
+    },
 }
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
